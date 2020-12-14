@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-  <name>gs-core</name>
+  <name>Gs-Core-Alt</name>
   <comment>The GraphStream library. With GraphStream you deal with
 		graphs. Static and Dynamic. You create them from scratch, from a file
 		or any source. You display and render them. This is the core package
