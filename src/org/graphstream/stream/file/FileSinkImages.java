@@ -291,6 +291,7 @@ public class FileSinkImages implements FileSink {
 	protected boolean hasBegan = false;
 	protected boolean autofit = true;
 	protected String styleSheet = null;
+	protected int framePercent = -1;
 
 	public FileSinkImages() {
 		this(OutputType.PNG, Resolutions.HD720);
@@ -589,6 +590,11 @@ public class FileSinkImages implements FileSink {
 	public void setViewPercent(double zoom) {
 		renderer.getCamera().setViewPercent(zoom);
 	}
+	
+	public void setFramePercent(int percent) {
+		if (percent > 0)
+			framePercent= percent;
+	}	
 
 	public void setGraphViewport(double minx, double miny, double maxx,
 			double maxy) {
@@ -660,6 +666,8 @@ public class FileSinkImages implements FileSink {
 
 				Point3 lo = gg.getMinPos();
 				Point3 hi = gg.getMaxPos();
+				
+				adjustFrame(lo,hi);
 
 				renderer.getCamera().setBounds(lo.x, lo.y, lo.z, hi.x, hi.y,
 						hi.z);
@@ -682,10 +690,39 @@ public class FileSinkImages implements FileSink {
 
 			ImageIO.write(image, outputType.name(), out);
 
-			printProgress();
+			// printProgress();
 		} catch (IOException e) {
 			// ?
 		}
+	}
+
+	private void adjustFrame(Point3 lo, Point3 hi) {
+		if (this.framePercent == -1)
+			return;
+		
+		double totalx = hi.x - lo.x;
+		double adjx = ((double)framePercent/100) * totalx;
+		
+		double totaly = hi.y - lo.y;
+		double adjy = ((double)framePercent/100) * totaly;
+		
+		// LOGGER.info("Adjustment x : " + adjx);
+		// LOGGER.info("Adjustment y : " + adjy);
+		
+		// LOGGER.info("Before lo.x : " + lo.x);
+		// LOGGER.info("Before lo.y : " + lo.y);
+		// LOGGER.info("Before hi.x : " + hi.x);
+		// LOGGER.info("Before hi.y : " + hi.y);
+		
+		lo.x -= adjx;
+		lo.y -= adjy;
+		hi.x += adjx;
+		hi.y += adjy;
+		
+		// LOGGER.info("After lo.x : " + lo.x);
+		// LOGGER.info("After lo.y : " + lo.y);
+		// LOGGER.info("After hi.x : " + hi.x);
+		// LOGGER.info("After hi.y : " + hi.y);
 	}
 
 	protected void printProgress() {
