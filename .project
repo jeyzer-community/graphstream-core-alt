@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+  <name>gs-core</name>
+  <comment>The GraphStream library. With GraphStream you deal with
+		graphs. Static and Dynamic. You create them from scratch, from a file
+		or any source. You display and render them. This is the core package
+		that contains the minimal needed to read, display and write a graph. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>
