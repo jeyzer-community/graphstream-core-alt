@@ -1,6 +1,19 @@
 GraphStream
 ===========
 
+GraphStream Core Modified version
+------------------------------------
+
+This is a modified version of the Graphstream library 1.3.0.
+Original graphstream project source code has been modified to :
+ - Add frame adjustment border to get all the graph elements fully displayed 
+
+This modified version is subject to the same licence terms than the original version, as detailed below.
+
+Code changes are accessible on : https://github.com/jeyzer-community/graphstream-core-alt
+
+
+
 .. image:: http://graphstream-project.org/media/img/gs-110.png
 
 Welcome to GraphStream, and thank you for your download, we hope you will find it
