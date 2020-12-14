@@ -1,0 +1,13 @@
+
+Grapshstream core alternative version
+-------------------------------------
+
+This is a modified version of the Graphstream library 1.3.0 available at https://graphstream-project.org/.
+
+Original graphstream core 1.3.0 source code has been modified to :
+ - Add frame adjustment border to get all the graph elements fully displayed 
+
+Like the original version, this modified version of the Graphstream library is free software distributed 
+under the terms of two licenses, the CeCILL-C license that fits European law, and the GNU Lesser General Public License
+
+Code changes of this modified version are accessible on : https://github.com/jeyzer-community/graphstream-core-alt
