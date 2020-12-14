@@ -95,6 +95,6 @@ public class TestFileSourceGML extends TestFileSourceBase {
 
 	@Override
 	public String anUndirectedTriangleHttpURL() {
-		return "http://graphstream-project.org/media/data/undirectedTriangle.gml";
+		return "https://graphstream-project.org/media/data/undirectedTriangle.gml";
 	}
 }

@@ -90,6 +90,6 @@ public class TestFileSourceDOT extends TestFileSourceBase {
 
 	@Override
 	public String anUndirectedTriangleHttpURL() {
-		return "http://graphstream-project.org/media/data/undirectedTriangle.dot";
+		return "https://graphstream-project.org/media/data/undirectedTriangle.dot";
 	}
 }
