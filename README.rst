@@ -12,7 +12,7 @@ This modified version is subject to the same licence terms than the original ver
 
 Code changes are accessible on : https://github.com/jeyzer-community/graphstream-core-alt
 
-
+Library is distributed as gs-core-alt-\<version\>.jar
 
 .. image:: http://graphstream-project.org/media/img/gs-110.png
 
