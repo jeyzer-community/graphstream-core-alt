@@ -34,7 +34,7 @@
 	<artifactId>gs-core-alt</artifactId>
 	<version>1.3.1</version>
 
-	<name>gs-core-alt</name>
+	<name>Graphstream Core Alt</name>
 	<description>
 		The GraphStream library. With GraphStream you deal with
 		graphs. Static and Dynamic. You create them from scratch, from a file
@@ -43,12 +43,17 @@
 	</description>
 	<url>http://graphstream-project.org</url>
 
-	<!-- Source code of GraphStream is hosted on GitHub. -->
 	<scm>
+		<url>https://192.168.1.15/External/Lib/Graphstream-core-alt.git</url>
+		<developerConnection>scm:git:https://192.168.1.15/External/Lib/Graphstream-core-alt.git</developerConnection>
+	</scm>
+	
+	<!-- Source code of GraphStream is hosted on GitHub. -->
+	<!--scm>
 		<connection>scm:git:git://github.com/graphstream/gs-core.git</connection>
 		<developerConnection>scm:git:git://github.com/graphstream/gs-core.git</developerConnection>
 		<url>https://github.com/graphstream/gs-core</url>
-	</scm>
+	</scm-->
 
 	<!-- GraphStream is using the GitHub issue tracker. -->
 	<issueManagement>
