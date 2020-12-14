@@ -263,6 +263,8 @@ public class FileSinkImages implements FileSink {
 
 	private static final Logger LOGGER = Logger.getLogger(FileSinkImages.class
 			.getName());
+	
+	private static final int NO_EXTRA_FRAME = -1;
 
 	protected Resolution resolution;
 	protected OutputType outputType;
@@ -291,7 +293,11 @@ public class FileSinkImages implements FileSink {
 	protected boolean hasBegan = false;
 	protected boolean autofit = true;
 	protected String styleSheet = null;
-	protected int framePercent = -1;
+	
+	protected int framePercentLeft = NO_EXTRA_FRAME;
+	protected int framePercentRight = NO_EXTRA_FRAME;
+	protected int framePercentTop = NO_EXTRA_FRAME;
+	protected int framePercentBottom = NO_EXTRA_FRAME;
 
 	public FileSinkImages() {
 		this(OutputType.PNG, Resolutions.HD720);
@@ -591,11 +597,26 @@ public class FileSinkImages implements FileSink {
 		renderer.getCamera().setViewPercent(zoom);
 	}
 	
-	public void setFramePercent(int percent) {
+	public void setFramePercentLeft(int percent) {
 		if (percent > 0)
-			framePercent= percent;
-	}	
+			framePercentLeft = percent;
+	}
+	
+	public void setFramePercentRight(int percent) {
+		if (percent > 0)
+			framePercentRight = percent;
+	}
+	
+	public void setFramePercentTop(int percent) {
+		if (percent > 0)
+			framePercentTop = percent;
+	}
 
+	public void setFramePercentBottom(int percent) {
+		if (percent > 0)
+			framePercentBottom = percent;
+	}
+	
 	public void setGraphViewport(double minx, double miny, double maxx,
 			double maxy) {
 		renderer.getCamera().setGraphViewport(minx, miny, maxx, maxy);
@@ -697,27 +718,35 @@ public class FileSinkImages implements FileSink {
 	}
 
 	private void adjustFrame(Point3 lo, Point3 hi) {
-		if (this.framePercent == -1)
-			return;
-		
-		double totalx = hi.x - lo.x;
-		double adjx = ((double)framePercent/100) * totalx;
-		
-		double totaly = hi.y - lo.y;
-		double adjy = ((double)framePercent/100) * totaly;
-		
-		// LOGGER.info("Adjustment x : " + adjx);
-		// LOGGER.info("Adjustment y : " + adjy);
-		
+
 		// LOGGER.info("Before lo.x : " + lo.x);
 		// LOGGER.info("Before lo.y : " + lo.y);
 		// LOGGER.info("Before hi.x : " + hi.x);
 		// LOGGER.info("Before hi.y : " + hi.y);
 		
-		lo.x -= adjx;
-		lo.y -= adjy;
-		hi.x += adjx;
-		hi.y += adjy;
+		double height = hi.x - lo.x;
+		
+		if (this.framePercentLeft != NO_EXTRA_FRAME){
+			double adjx = ((double)framePercentLeft/100) * height;
+			lo.x -= adjx;
+		}
+
+		if (this.framePercentRight != NO_EXTRA_FRAME){
+			double adjx = ((double)framePercentRight/100) * height;
+			hi.x += adjx;
+		}
+	
+		double width = hi.y - lo.y;
+		
+		if (this.framePercentTop != NO_EXTRA_FRAME){
+			double adjy = ((double)framePercentTop/100) * width;
+			hi.y += adjy;
+		}
+
+		if (this.framePercentBottom != NO_EXTRA_FRAME){
+			double adjy = ((double)framePercentBottom/100) * width;
+			lo.y -= adjy;
+		}
 		
 		// LOGGER.info("After lo.x : " + lo.x);
 		// LOGGER.info("After lo.y : " + lo.y);
